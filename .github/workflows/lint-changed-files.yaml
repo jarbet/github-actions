@@ -43,7 +43,6 @@ jobs:
       - name: Download .lintr file
         run: |
           curl -LJO https://raw.githubusercontent.com/jarbet/github-actions/main/.lintr
-          mv .lintr .lintr
 
       - name: Set lintr path
         run: echo 'options(lintr.linter_file = ".lintr")' >> ~/.Rprofile
