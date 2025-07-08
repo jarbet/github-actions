@@ -42,6 +42,9 @@ jobs:
 
       - name: Download .lintr file
         run: |
+          if [ -f .lintr ]; then
+            rm .lintr
+          fi
           curl -LJO https://raw.githubusercontent.com/jarbet/github-actions/main/.lintr
 
       - name: Set lintr path
