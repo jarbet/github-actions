@@ -15,7 +15,7 @@ jobs:
 
       - name: Remove renv and .Rprofile
         run: |
-          if [ -d "renv" ; then
+          if [ -d "renv" ]; then
           rm -rf renv
           fi
           if [ -f ".Rprofile" ]; then
@@ -42,8 +42,8 @@ jobs:
 
       - name: Download .lintr file
         run: |
-          curl -LJO https://github.com/jarbet/github-actions/blob/main/.lintr
-          mv .lintr?raw=true .lintr
+          curl -LJO https://raw.githubusercontent.com/jarbet/github-actions/main/.lintr
+          mv .lintr .lintr
 
       - name: Set lintr path
         run: echo 'options(lintr.linter_file = ".lintr")' >> ~/.Rprofile
@@ -57,4 +57,3 @@ jobs:
         shell: Rscript {0}
         env:
           LINTR_ERROR_ON_LINT: true
-
