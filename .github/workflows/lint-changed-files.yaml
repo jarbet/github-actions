@@ -1,7 +1,5 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
-  pull_request:
+  workflow_call:
 
 name: lint-changed-files.yaml
 
@@ -17,7 +15,7 @@ jobs:
 
       - name: Remove renv and .Rprofile
         run: |
-          if [ -d "renv" ]; then
+          if [ -d "renv" ; then
           rm -rf renv
           fi
           if [ -f ".Rprofile" ]; then
@@ -59,3 +57,4 @@ jobs:
         shell: Rscript {0}
         env:
           LINTR_ERROR_ON_LINT: true
+
