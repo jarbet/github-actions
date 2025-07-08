@@ -1,3 +1,5 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   pull_request:
 
@@ -40,11 +42,14 @@ jobs:
       - name: Install R packages
         run: Rscript -e "install.packages(c('lintr', 'gh'), repos = 'https://cloud.r-project.org/')"
 
-      - name: Add lintr options
+      - name: Download .lintr file
         run: |
-          cat('\noptions(lintr.linter_file = ".lintr")\n', file = "~/.Rprofile", append = TRUE)
-        shell: Rscript {0}
+          curl -LJO https://github.com/jarbet/github-actions/blob/main/.lintr
+          mv .lintr?raw=true .lintr
 
+      - name: Set lintr path
+        run: echo 'options(lintr.linter_file = ".lintr")' >> ~/.Rprofile
+        
       - name: Extract and lint files changed by this PR
         run: |
           files <- gh::gh("GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files")
