@@ -14,6 +14,7 @@ linters: linters_with_defaults(
     lengths_linter(),
     object_name_linter('dotted.case'),
     object_overwrite_linter(),
+    object_usage_linter = NULL,
     quotes_linter(delimiter = c("'")),
     spaces_left_parentheses_linter(),
     semicolon_linter(allow_trailing = TRUE),
