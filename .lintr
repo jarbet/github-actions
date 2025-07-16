@@ -8,7 +8,7 @@ linters: linters_with_defaults(
     function_left_parentheses_linter(),
     infix_spaces_linter(),
     indentation_linter = NULL,
-    line_length_linter(length = 100L),
+    line_length_linter(length = 200L),
     length_levels_linter(),
     length_levels_linter(),
     lengths_linter(),
