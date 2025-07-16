@@ -3,6 +3,7 @@ linters: linters_with_defaults(
     brace_linter(),
     class_equals_linter(),
     commas_linter(),
+    commented_code_linter = NULL,
     duplicate_argument_linter(),
     function_left_parentheses_linter(),
     infix_spaces_linter(),
